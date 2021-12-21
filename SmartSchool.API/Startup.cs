@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SmartSchool.API.Data;
 
 namespace SmartSchool.API
 {
@@ -17,6 +19,10 @@ namespace SmartSchool.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<SmartContext>(
+                context => context.UseSqlite(Configuration.GetConnectionString("Default"))
+            );
+
             services.AddControllers();
         }
 
