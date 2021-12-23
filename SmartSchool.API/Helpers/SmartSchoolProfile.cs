@@ -22,6 +22,15 @@ namespace SmartSchool.API.Helpers
 
             CreateMap<AlunoDto, Aluno>();
             CreateMap<AlunoRegistrarDto, Aluno>();
+
+            CreateMap<Professor, ProfessorDto>()
+              .ForMember(
+                  dest => dest.Nome,
+                  opt => opt.MapFrom(
+                      src => $"{src.Nome} {src.Sobrenome}")
+               );
+
+            CreateMap<ProfessorDto, Professor>();
         }
     }
 }
