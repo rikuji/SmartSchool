@@ -1,15 +1,18 @@
-﻿namespace SmartSchool.API.Models
+﻿using System;
+
+namespace SmartSchool.API.Models
 {
     public class AlunoDisciplina
     {
         public AlunoDisciplina() { }
-
         public AlunoDisciplina(int alunoId, int disciplinaId)
         {
             AlunoId = alunoId;
             DisciplinaId = disciplinaId;
         }
-
+        public DateTime DataIni { get; set; } = DateTime.Now;
+        public DateTime? DataFim { get; set; }
+        public int? Nota { get; set; } = null;
         public int AlunoId { get; set; }
         public Aluno Aluno { get; set; }
         public int DisciplinaId { get; set; }
